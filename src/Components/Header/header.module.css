@@ -1,0 +1,9 @@
+.header__img {
+    width: 100%;
+    display: block
+}
+
+.header__img2 {
+    display: none;
+    width: 100%
+}

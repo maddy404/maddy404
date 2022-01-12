@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import routes from "./routing/routes";
+import { Header, Footer } from "./Components";
+import { Home } from "./pages";
 import { useApp } from "./hooks";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./app.css";
 
 const App = () => {
   const { response } = useApp();
@@ -32,12 +38,6 @@ const App = () => {
     });
 
     response?.ordersDetail?.map((item) => {
-      // console.log(item);
-      console.log(item.orderID);
-      console.log(typeof item.orderID);
-      console.log(typeof orderID.toString());
-      console.log(orderID);
-
       if (item.orderID === orderID.toString()) {
         setFetchItems(item);
         console.log("yes");
@@ -46,22 +46,18 @@ const App = () => {
       }
       return null;
     });
-  }, [fetchUser, isActiveInstall, orderID]);
+  }, [fetchUser, isActiveInstall, orderID, response]);
 
   const userHandler = (e) => {
     setFetchUser(e.target.value);
   };
 
   const nextHandler = (orderID) => {
-    console.log(orderID);
     setOrderID(orderID);
   };
-
-  console.log("pd", fetchItems);
-  console.log(orderID);
   return (
     <div>
-      <h3>App Status</h3>
+      {/* <h3>App Status</h3>
       <select
         onChange={(e) => {
           userHandler(e);
@@ -119,7 +115,14 @@ const App = () => {
             );
           })}
         </div>
-      )}
+      )} */}
+      <Header />
+      <Routes>
+        {routes.map((route, key) => (
+          <Route path={route.path} element={<route.component />} key={key} />
+        ))}
+      </Routes>
+      <Footer />
     </div>
   );
 };

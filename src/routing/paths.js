@@ -1,0 +1,9 @@
+export const LANDING = "/";
+export const HOME = "/Home";
+export const ITEMS = "/Items";
+export const REASON = "/Reason";
+export const PHOTO = "/Photo";
+export const RETURN_OPTIONS = "/Return";
+export const EXCHANGE_OPTIONS = "/Exchange";
+export const NEIGHBOUR = "/Neighbour";
+export const REFUND = "./Refund";
